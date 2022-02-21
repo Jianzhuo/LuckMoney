@@ -28,6 +28,7 @@ contract LuckyMoneyCreator {
      */
     function create(uint max_participants) payable public
     returns(bool success) {
+        require(msg.value > 0, "Cannot send empty LuckyMoney!");
         //create an instance of LuckyMoney contract
         //wrap the new LuckyMoney(max_participants, msg.sender) in a try/catch as a failsafe.
         try new LuckyMoney(max_participants, msg.sender) returns (LuckyMoney newLuckyMoney){
